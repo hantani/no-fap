@@ -1,0 +1,54 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+}
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.profile .title {
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.profile .sub-title {
+  margin-top: 15px;
+  color: #666;
+}
+
+.time-table {
+  margin: 70px 20px 0 20px;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  padding: 25px;
+}
+.time-table .days p {
+  text-align: center;
+}
+.time-table .days .sub-title {
+  color: #666;
+  margin-bottom: 20px;
+}
+.time-table .days .title span {
+  font-size: 36px;
+  font-weight: 600;
+}
+.time-table .time-sets ul {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.time-table .time-sets li p:first-child {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+}
+.time-table .time-sets li p:last-child {
+  color: #666;
+  text-align: center;
+  font-size: 14px;
+}
