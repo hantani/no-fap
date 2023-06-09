@@ -10,8 +10,9 @@ import {
   IonLabel,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { homeOutline } from "ionicons/icons";
+import { home, list } from "ionicons/icons";
 import Home from "./pages/Home";
+import List from "./pages/List";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -41,11 +42,16 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Redirect exact path="/" to="/home" />
           <Route path="/home" render={() => <Home />} exact={true} />
+          <Route path="/memo" render={() => <List />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="home" href="/home">
-            <IonIcon icon={homeOutline} />
+            <IonIcon icon={home} />
             <IonLabel>No Fap</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="memo" href="/memo">
+            <IonIcon icon={list} />
+            <IonLabel>Goal List</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

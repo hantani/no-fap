@@ -34,7 +34,7 @@
   margin-bottom: 20px;
 }
 .time-table .days .title span {
-  font-size: 36px;
+  font-size: 42px;
   font-weight: 600;
 }
 .time-table .time-sets ul {
@@ -43,7 +43,7 @@
   margin-top: 40px;
 }
 .time-table .time-sets li p:first-child {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   text-align: center;
 }
@@ -51,4 +51,20 @@
   color: #666;
   text-align: center;
   font-size: 14px;
+}
+
+.refresh-btn-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.refresh-btn-container button {
+  width: 40px;
+  height: 40px;
+}
+.refresh-btn-container button ion-icon {
+  font-size: 40px;
+  color: #dd1a1a;
 }

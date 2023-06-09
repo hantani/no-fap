@@ -1,0 +1,37 @@
+.memo-form {
+  padding: 20px 0;
+  margin: 0 20px;
+}
+.memo-form input {
+  width: calc(100% - 72px);
+  height: 40px;
+}
+.memo-form button {
+  margin-left: 12px;
+}
+
+.memo-list {
+  margin: 20px 20px 40px 20px;
+}
+.memo-list li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ededed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.memo-list p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  width: calc(100% - 92px);
+}
+.memo-list .btns-container button ion-icon {
+  font-size: 40px;
+}
+.memo-list .btns-container .check-btn ion-icon {
+  color: #3addd3;
+}
+.memo-list .btns-container .delete-btn ion-icon {
+  color: #dd1a1a;
+}
