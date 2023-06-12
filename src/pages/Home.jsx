@@ -7,11 +7,10 @@ import "./Home.css";
 import TimeTable from "../components/TimeTable";
 import HomeTitle from "../components/HomeTitle";
 
-const Home = () => {
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+const Home = ({ days, setDays, records, setRecords }) => {
+  const [hours, setHours] = useState(23);
+  const [minutes, setMinutes] = useState(59);
+  const [seconds, setSeconds] = useState(55);
   const [presentAlert] = useIonAlert();
 
   useEffect(() => {
@@ -29,6 +28,7 @@ const Home = () => {
     if (hours === 24) {
       setHours(0);
       setDays((prevDays) => prevDays + 1);
+      setRecords([...records, days + 1]);
     }
     return () => {
       clearInterval(tick);
