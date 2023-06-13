@@ -7,13 +7,12 @@ const MyGoal = ({ days }) => {
 
   useEffect(() => {
     let width = parseInt((days / goal) * 100);
-    console.log(width);
     if (width > 100) {
       setPercentage("100%");
     } else {
       setPercentage(width + "%");
     }
-  }, [days]);
+  }, [days, goal]);
 
   const onChange = (e) => {
     setValue(e.target.value);

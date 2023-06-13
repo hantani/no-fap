@@ -1,3 +1,12 @@
+.saying-title {
+  font-size: 16px;
+  padding: 0 20px;
+  line-height: 1.5;
+  margin: 0;
+  margin-top: 6px;
+  color: #666;
+}
+
 .profile {
   display: flex;
   flex-direction: column;

@@ -10,8 +10,8 @@ const MyPage = ({ days, achieves, records }) => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <h1 className="page-title">마이 페이지</h1>
-        <MyBadge />
+        <h1 className="page-title">My Page</h1>
+        <MyBadge records={records} />
         <MyAchieves achieves={achieves} days={days} />
         <MyGoal days={days} />
         <MyRecord days={days} records={records} />
