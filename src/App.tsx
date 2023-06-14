@@ -11,8 +11,7 @@ import {
   IonLabel,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { archive, home, list, personCircle } from "ionicons/icons";
-import { getAchieves } from "./modules/Storage";
+import { home, list, personCircle } from "ionicons/icons";
 import Home from "./pages/Home";
 import List from "./pages/List";
 import MyPage from "./pages/MyPage";
