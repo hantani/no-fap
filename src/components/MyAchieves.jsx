@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getAchieves } from "../modules/Storage";
 
-const MyAchieves = ({ achieves, days }) => {
+const MyAchieves = ({ achieves, days, setAchieves }) => {
+  useEffect(() => {
+    getAchieves().then((achieves) => {
+      const parsedList = JSON.parse(achieves);
+      setAchieves(parsedList);
+    });
+  }, []);
+
   return (
     <div className="my-achieves">
       <h2 className="list-title">나의 목표</h2>

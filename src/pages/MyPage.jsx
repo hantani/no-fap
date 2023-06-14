@@ -6,13 +6,13 @@ import MyAchieves from "../components/MyAchieves";
 import MyGoal from "../components/MyGoal";
 import MyRecord from "../components/MyRecord";
 
-const MyPage = ({ days, achieves, records }) => {
+const MyPage = ({ days, achieves, records, setAchieves }) => {
   return (
     <IonPage>
       <IonContent fullscreen>
         <h1 className="page-title">My Page</h1>
         <MyBadge records={records} />
-        <MyAchieves achieves={achieves} days={days} />
+        <MyAchieves achieves={achieves} days={days} setAchieves={setAchieves} />
         <MyGoal days={days} />
         <MyRecord days={days} records={records} />
       </IonContent>

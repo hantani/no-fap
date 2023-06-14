@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HomeTitle = React.memo(({ days }) => {
+const HomeTitle = ({ days }) => {
   const [message, setMessage] = useState([
     "진정한 행복은 절제에서 솟아난다. - 괴테",
     "운동과 절제는 노경에 이르기까지 젊은 시절의 힘을 어느 정도 보존해 준다. - 키케로",
@@ -27,6 +27,6 @@ const HomeTitle = React.memo(({ days }) => {
   const randomNum = parseInt(Math.random() * message.length);
 
   return <h2 className="saying-title">{message[randomNum]}</h2>;
-});
+};
 
 export default HomeTitle;

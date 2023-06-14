@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
@@ -11,7 +11,8 @@ import {
   IonLabel,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { home, list, personCircle } from "ionicons/icons";
+import { archive, home, list, personCircle } from "ionicons/icons";
+import { getAchieves } from "./modules/Storage";
 import Home from "./pages/Home";
 import List from "./pages/List";
 import MyPage from "./pages/MyPage";
@@ -42,6 +43,12 @@ const App: React.FC = () => {
   const [achieves, setAchieves] = useState([]);
   const [records, setRecords] = useState([0]);
 
+  // useEffect(() => {
+  //   getArchieves().then((archives: string) => {
+  //     setAchieves(JSON.parse(archives));
+  //   });
+  // }, [achieves]);
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -61,7 +68,7 @@ const App: React.FC = () => {
               exact={true}
             />
             <Route
-              path="/memo"
+              path="/list"
               render={() => (
                 <List achieves={achieves} setAcheives={setAchieves} />
               )}
@@ -70,7 +77,12 @@ const App: React.FC = () => {
             <Route
               path="/mypage"
               render={() => (
-                <MyPage days={days} achieves={achieves} records={records} />
+                <MyPage
+                  days={days}
+                  achieves={achieves}
+                  records={records}
+                  setAchieves={setAchieves}
+                />
               )}
               exact={true}
             />
@@ -80,7 +92,7 @@ const App: React.FC = () => {
               <IonIcon icon={home} />
               <IonLabel>No Fap</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="memo" href="/memo">
+            <IonTabButton tab="memo" href="/list">
               <IonIcon icon={list} />
               <IonLabel>Goal List</IonLabel>
             </IonTabButton>

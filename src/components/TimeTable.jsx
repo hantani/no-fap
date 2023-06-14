@@ -1,34 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useDidMountEffect from "../useHooks/useDidMountEffect";
 import useInterval from "../useHooks/useInterval";
 import Days from "./Days";
 import RefreshBtn from "./RefreshBtn";
+import {
+  store,
+  getDays,
+  getHours,
+  getMinutes,
+  getSeconds,
+} from "../modules/Storage";
 
 const TimeTable = ({ days, setDays, records, setRecords }) => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
+  useEffect(() => {
+    getDays().then((days) => {
+      setDays(days);
+    });
+    getHours().then((hours) => {
+      setHours(hours);
+    });
+    getMinutes().then((minutes) => {
+      setMinutes(minutes);
+    });
+    getSeconds().then((seconds) => {
+      setSeconds(seconds);
+    });
+  }, []);
+
   useInterval(() => {
     setSeconds(seconds + 1);
+    store.set("seconds", seconds + 1);
   }, 1000);
 
-  useDidMountEffect(() => {
-    setSeconds(0);
-    setMinutes(minutes + 1);
-  }, [seconds === 60]);
+  if (seconds === 60) {
+    getSeconds().then((seconds) => {
+      seconds = 0;
+      setSeconds(seconds);
+      setMinutes(minutes + 1);
+      store.set("seconds", 0);
+      store.set("minutes", minutes + 1);
+    });
+  }
 
-  useDidMountEffect(() => {
-    setMinutes(0);
-    setHours(hours + 1);
-  }, [minutes === 60]);
+  if (minutes === 60) {
+    getMinutes().then((minutes) => {
+      minutes = 0;
+      setMinutes(minutes);
+      setHours(hours + 1);
+      store.set("minutes", 0);
+      store.set("hours", hours + 1);
+    });
+  }
 
-  useDidMountEffect(() => {
-    setHours(0);
-    setDays(days + 1);
-    setRecords([...records, days + 1]);
-    console.log("working");
-  }, [hours === 24]);
+  if (hours === 24) {
+    getHours().then((hours) => {
+      hours = 0;
+      setHours(hours);
+      setDays(days + 1);
+      store.set("hours", 0);
+      store.set("days", days + 1);
+    });
+  }
 
   return (
     <>

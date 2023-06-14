@@ -1,17 +1,17 @@
-import React, { useState, useCallback } from "react";
-import { IonIcon } from "@ionic/react";
-import { closeCircle, checkmarkCircle } from "ionicons/icons";
+import React, { useState, useCallback, useEffect } from "react";
 import MemoList from "./MemoList";
+import { store, getList } from "../modules/Storage";
 
 const ListForm = ({ achieves, setAcheives }) => {
   const [value, setValue] = useState("");
-  const [id, setId] = useState(1);
-  const [list, setList] = useState([
-    {
-      id: 0,
-      value: "몸 만들기",
-    },
-  ]);
+  const [id, setId] = useState(0);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    getList().then((list) => {
+      setList(JSON.parse(list));
+    });
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +24,11 @@ const ListForm = ({ achieves, setAcheives }) => {
       value,
     };
     setList([...list, newGoal]);
+    getList().then((list) => {
+      const prevList = JSON.parse(list);
+      const newList = [...prevList, newGoal];
+      store.set("list", JSON.stringify(newList));
+    });
     setValue("");
   };
 

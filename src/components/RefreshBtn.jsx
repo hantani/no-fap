@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from "react";
 import { useIonAlert, IonIcon } from "@ionic/react";
 import { refreshCircle } from "ionicons/icons";
+import { store } from "../modules/Storage";
 
 const RefreshBtn = ({ setDays, setHours, setMinutes, setSeconds }) => {
   const [presentAlert] = useIonAlert();
@@ -22,6 +23,11 @@ const RefreshBtn = ({ setDays, setHours, setMinutes, setSeconds }) => {
             setHours(0);
             setMinutes(0);
             setSeconds(0);
+            store.clear();
+            store.set("days", 0);
+            store.set("hours", 0);
+            store.set("minutes", 0);
+            store.set("seconds", 0);
           },
         },
       ],
