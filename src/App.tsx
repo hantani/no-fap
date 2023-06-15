@@ -40,13 +40,7 @@ setupIonicReact();
 const App: React.FC = () => {
   const [days, setDays] = useState(0);
   const [achieves, setAchieves] = useState([]);
-  const [records, setRecords] = useState([0]);
-
-  // useEffect(() => {
-  //   getArchieves().then((archives: string) => {
-  //     setAchieves(JSON.parse(archives));
-  //   });
-  // }, [achieves]);
+  const [records, setRecords] = useState();
 
   return (
     <IonApp>
@@ -80,6 +74,7 @@ const App: React.FC = () => {
                   days={days}
                   achieves={achieves}
                   records={records}
+                  setRecords={setRecords}
                   setAchieves={setAchieves}
                 />
               )}

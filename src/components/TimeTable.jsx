@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useDidMountEffect from "../useHooks/useDidMountEffect";
 import useInterval from "../useHooks/useInterval";
 import Days from "./Days";
 import RefreshBtn from "./RefreshBtn";
@@ -9,6 +8,7 @@ import {
   getHours,
   getMinutes,
   getSeconds,
+  getRecords,
 } from "../modules/Storage";
 
 const TimeTable = ({ days, setDays, records, setRecords }) => {
@@ -61,8 +61,14 @@ const TimeTable = ({ days, setDays, records, setRecords }) => {
       hours = 0;
       setHours(hours);
       setDays(days + 1);
+      setRecords([...records, days + 1]);
       store.set("hours", 0);
       store.set("days", days + 1);
+    });
+    getRecords().then((records) => {
+      const parsedList = JSON.parse(records);
+      const newList = [...parsedList, days + 1];
+      store.set("records", JSON.stringify(newList));
     });
   }
 

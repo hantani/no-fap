@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const HomeTitle = ({ days }) => {
-  const [message, setMessage] = useState([
+const HomeTitle = () => {
+  const [messages, setMessages] = useState([
     "진정한 행복은 절제에서 솟아난다. - 괴테",
     "운동과 절제는 노경에 이르기까지 젊은 시절의 힘을 어느 정도 보존해 준다. - 키케로",
     "식물에 있어서의 절제는 건강을 보증하고, 교제에 있어서의 절제는 정신의 안정을 보증한다. - 쇼펜하우어",
@@ -24,9 +24,14 @@ const HomeTitle = ({ days }) => {
     "절제는 만족의 어머니다. - W.고텔",
     "행동만이 삶에 힘을 주고, 절제만이 삶에 매력을 준다. - 장 폴 리히터",
   ]);
+  const [message, setMessage] = useState("");
   const randomNum = parseInt(Math.random() * message.length);
 
-  return <h2 className="saying-title">{message[randomNum]}</h2>;
+  useEffect(() => {
+    setMessage(messages[randomNum]);
+  }, []);
+
+  return <h2 className="saying-title">{message}</h2>;
 };
 
 export default HomeTitle;

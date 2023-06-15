@@ -1,5 +1,4 @@
 import { Storage } from "@ionic/storage";
-import { archive } from "ionicons/icons";
 export const store = new Storage();
 store.create();
 export const getDays = async () => {
@@ -28,7 +27,17 @@ export const getList = async () => {
   return promise;
 };
 export const getAchieves = async () => {
-  const promise = await store.get("archieves");
+  const promise = await store.get("achieves");
+
+  return promise;
+};
+export const getGoal = async () => {
+  const promise = await store.get("goal");
+
+  return promise;
+};
+export const getRecords = async () => {
+  const promise = await store.get("records");
 
   return promise;
 };
@@ -62,5 +71,16 @@ getAchieves().then((achives) => {
   if (!achives) {
     const array = [];
     store.set("achieves", JSON.stringify(array));
+  }
+});
+getGoal().then((goal) => {
+  if (!goal) {
+    store.set("goal", null);
+  }
+});
+getRecords().then((records) => {
+  const array = [0];
+  if (!records) {
+    store.set("records", JSON.stringify(array));
   }
 });

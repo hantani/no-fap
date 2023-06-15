@@ -1,9 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { store, getGoal } from "../modules/Storage";
 
 const MyGoal = ({ days }) => {
   const [goal, setGoal] = useState();
   const [value, setValue] = useState("");
   const [percentage, setPercentage] = useState("");
+
+  useEffect(() => {
+    getGoal().then((goal) => {
+      setGoal(goal);
+    });
+  }, []);
 
   useEffect(() => {
     let width = parseInt((days / goal) * 100);
@@ -21,13 +28,19 @@ const MyGoal = ({ days }) => {
   const onClick = () => {
     if (!isNaN(value)) {
       setGoal(value);
+      getGoal().then((goal) => {
+        store.set("goal", value);
+      });
       setValue("");
     }
   };
 
-  const onReset = () => {
+  const onReset = useCallback(() => {
     setGoal();
-  };
+    getGoal().then((goal) => {
+      store.set("goal", null);
+    });
+  }, []);
 
   return (
     <div className="my-goal">

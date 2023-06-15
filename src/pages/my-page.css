@@ -52,6 +52,11 @@
 .my-achieves {
   padding: 20px;
 }
+.my-achieves .title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .my-achieves ul {
   margin-top: 20px;
 }
@@ -64,6 +69,19 @@
 .my-achieves ul li:last-child {
   margin-bottom: 0;
 }
+/* .my-achieves ul li .left-section p:nth-child(1) {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.my-achieves ul li .left-section p:nth-child(2) {
+  font-size: 14px;
+  color: #666;
+}
+.my-achieves ul li .right-section button ion-icon {
+  font-size: 35px;
+  color: #dd1a1a;
+} */
 .my-achieves ul li p:nth-child(1) {
   font-size: 18px;
   font-weight: 500;
